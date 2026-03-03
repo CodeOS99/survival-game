@@ -15,6 +15,7 @@ var gravity = 9.8
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var right_hand_holding = $Head/Camera3D/Hands/HandRight/Holding
 
 # for additional bobbing things
 var additional_bobbers: Array[Node3D] = []
@@ -31,6 +32,11 @@ func _unhandled_input(event):
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("use_tool"):
+		right_hand_holding.get_child(0).use()
+	elif Input.is_action_just_released("use_tool"):
+		right_hand_holding.get_child(0).reset()
 
 func _physics_process(delta):
 	# Add the gravity.
