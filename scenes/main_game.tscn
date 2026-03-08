@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dvnbtdsths6f3"]
 
 [ext_resource type="PackedScene" uid="uid://q2x0ajymmhdw" path="res://scenes/player.tscn" id="1_s3esy"]
+[ext_resource type="PackedScene" uid="uid://cd0qtjb43jcfx" path="res://scenes/tree_long.tscn" id="2_72e8q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s3esy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -19,9 +20,6 @@ size = Vector3(20, 1, 20)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_72e8q"]
 points = PackedVector3Array(-10, -0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, -0.5, 10, -10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, 10)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_s3esy"]
-height = 7.5
 
 [node name="MainGame" type="Node3D" unique_id=215476466]
 
@@ -43,10 +41,5 @@ mesh = SubResource("BoxMesh_q7yvd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=320314729]
 shape = SubResource("ConvexPolygonShape3D_72e8q")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1476971916]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=289761965]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6989636, 3.0340075)
-mesh = SubResource("CylinderMesh_s3esy")
-
-[node name="Decal" type="Decal" parent="StaticBody3D" unique_id=2118443234]
+[node name="TreeLong" parent="." unique_id=551745622 instance=ExtResource("2_72e8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40605688, 2.6387143)
