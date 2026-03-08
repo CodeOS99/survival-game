@@ -4,15 +4,19 @@
 [ext_resource type="Script" uid="uid://dsorxw7w17jfx" path="res://scripts/tree_long.gd" id="1_rivfm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_72e8q"]
-height = 6.1203613
+height = 5.216919
 radius = 0.3095703
 
 [node name="TreeLong" type="StaticBody3D" unique_id=551745622 groups=["Tree"]]
+collision_layer = 3
 script = ExtResource("1_rivfm")
 
 [node name="tree-tall2" parent="." unique_id=608403100 instance=ExtResource("1_ofcrn")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1504227507]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0601807, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5119019, 0)
 shape = SubResource("CylinderShape3D_72e8q")
+
+[node name="LogPoint" type="Node3D" parent="." unique_id=1673275817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86561346, 0)

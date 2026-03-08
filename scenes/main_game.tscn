@@ -18,6 +18,9 @@ tonemap_mode = 2
 [sub_resource type="BoxMesh" id="BoxMesh_q7yvd"]
 size = Vector3(20, 1, 20)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72e8q"]
+albedo_color = Color(0.4117647, 0.52156866, 0.28235295, 1)
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_72e8q"]
 points = PackedVector3Array(-10, -0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, -0.5, 10, -10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, 10)
 
@@ -31,12 +34,13 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1131972270 instance=ExtResource("1_s3esy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0628986, 4.3083935, -0.4526801)
+transform = Transform3D(-0.62484753, 0, -0.7807468, 0, 1, 0, 0.7807468, 0, -0.62484753, -2.0628986, 4.3083935, -0.4526801)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=776095066]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1341718722]
 mesh = SubResource("BoxMesh_q7yvd")
+surface_material_override/0 = SubResource("StandardMaterial3D_72e8q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=320314729]
 shape = SubResource("ConvexPolygonShape3D_72e8q")

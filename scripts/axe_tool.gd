@@ -20,10 +20,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _process(delta: float) -> void:
 	for body in area.get_overlapping_bodies():
 		if body.is_in_group("Tree") and body not in hit_trees:
-			body.mesh.scale.x-=1
-			body.mesh.scale.y-=1
-			body.mesh.scale.z-=1
-			if body.scale.x == 0:
+			if body.chopped():
 				body.queue_free()
 			hit_trees.append(body)
 			
