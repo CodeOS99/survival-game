@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://cd0qtjb43jcfx"]
 
 [ext_resource type="PackedScene" uid="uid://dqcb6qtw104c7" path="res://assets/kenneysSurvivalKit/GLB format/tree-tall.glb" id="1_ofcrn"]
+[ext_resource type="Script" uid="uid://dsorxw7w17jfx" path="res://scripts/tree_long.gd" id="1_rivfm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_72e8q"]
 height = 6.1203613
 radius = 0.3095703
 
 [node name="TreeLong" type="StaticBody3D" unique_id=551745622 groups=["Tree"]]
+script = ExtResource("1_rivfm")
 
 [node name="tree-tall2" parent="." unique_id=608403100 instance=ExtResource("1_ofcrn")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
