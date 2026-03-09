@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://crugdpxv86li0" path="res://scenes/axe.tscn" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://bmp6ypcg1wa0l" path="res://scripts/bobber.gd" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://h0ake6u10bko" path="res://assets/crosshairs/crosshair186.png" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://dwjsj5fg723p5" path="res://scripts/item_pickup_raycast.gd" id="4_qlg0r"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
@@ -37,6 +38,11 @@ script = ExtResource("3_qhqgy")
 
 [node name="CameraBobber" type="Node3D" parent="Head/Camera3D" unique_id=1058720466]
 script = ExtResource("3_qhqgy")
+
+[node name="ItemPickupRaycast" type="RayCast3D" parent="Head/Camera3D" unique_id=1085505345]
+target_position = Vector3(0, 0, -3)
+collision_mask = 2
+script = ExtResource("4_qlg0r")
 
 [node name="HUD" type="Control" parent="." unique_id=1266680783]
 layout_mode = 3

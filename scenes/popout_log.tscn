@@ -2,11 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://b5n2eb3dtulxn" path="res://assets/kenneysSurvivalKit/GLB format/tree-log.glb" id="1_qe13s"]
 [ext_resource type="Script" uid="uid://pc2p88i0kayu" path="res://scripts/popout_log.gd" id="1_xgdxm"]
+[ext_resource type="Script" uid="uid://bx3ichle3w8t8" path="res://scripts/collectible.gd" id="3_v8bpk"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xgdxm"]
 points = PackedVector3Array(-0.0610045, -0.1056551, -0.5, -0.1220087, -1.9721687e-05, -0.5, 0.06097947, -0.1056551, -0.5, -0.0610045, -0.1056551, 0.5, -0.122081965, 0.13255349, -0.18754894, -0.0610045, 0.10564277, -0.5, -0.1220087, -1.9721687e-05, 0.5, 0.12198368, -1.9721687e-05, -0.5, 0.06097947, -0.1056551, 0.5, -0.122081965, 0.13255349, -0.15113547, -0.090529755, 0.1507833, -0.18754894, 0.06097947, 0.10564277, -0.5, -0.0610045, 0.10564277, 0.5, 0.12740518, 0.1495083, 0.23198903, 0.12198368, -1.9721687e-05, 0.5, -0.090529755, 0.1507833, -0.15113547, 0.08935693, 0.17148176, 0.23198903, 0.06097947, 0.10564277, 0.5, 0.08935693, 0.17148176, 0.27584183, 0.12740518, 0.1495083, 0.27584183)
 
-[node name="PopoutLog" type="RigidBody3D" unique_id=1014590721]
+[node name="PopoutLog" type="RigidBody3D" unique_id=1014590721 groups=["Collectible"]]
 collision_layer = 2
 mass = 15.0
 script = ExtResource("1_xgdxm")
@@ -17,5 +18,8 @@ shape = SubResource("ConvexPolygonShape3D_xgdxm")
 
 [node name="tree-log2" parent="." unique_id=128071069 instance=ExtResource("1_qe13s")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Collectible" type="Node3D" parent="." unique_id=2083860411]
+script = ExtResource("3_v8bpk")
 
 [editable path="tree-log2"]
