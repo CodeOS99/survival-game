@@ -3,6 +3,8 @@ extends RigidBody3D
 const HORIZONTAL_FORCE: float = 50.0
 const VERTICAL_FORCE: float = 50.0
 
+@onready var outline_mesh: MeshInstance3D = $OutlineMesh
+
 var base_position: Vector3
 var time := 0.0
 var landed := false

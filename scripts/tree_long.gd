@@ -9,7 +9,7 @@ func spawn_log():
 	get_tree().root.add_child(log)
 	log.global_position = $LogPoint.global_position
 
-func chopped():
+func chopped() -> bool: # also return whether its chopped or not
 	self.mesh.scale.x-=1
 	self.mesh.scale.y-=1
 	self.mesh.scale.z-=1
