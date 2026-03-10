@@ -14,5 +14,6 @@ func chopped() -> bool: # also return whether its chopped or not
 	self.mesh.scale.y-=1
 	self.mesh.scale.z-=1
 	self.spawn_log()
+	Globals.player.shake_camera()
 	
 	return self.mesh.scale.x <= 0

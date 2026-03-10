@@ -6,13 +6,20 @@ extends Node
 @export var BOB_AMP := 0.08
 var t_bob = 0.0
 
+var base_position: Vector3
+
 func _ready() -> void:
 	if to_bob == null:
 		to_bob = get_parent()
+	
+	base_position = to_bob.transform.origin
 
 func _process(delta: float) -> void:
+	if "should_bob" in to_bob:
+		if not to_bob.should_bob:
+			return
 	t_bob += delta * Globals.player.velocity.length() * float(Globals.player.is_on_floor())
-	to_bob.transform.origin = _headbob(t_bob)
+	to_bob.transform.origin = base_position + _headbob(t_bob)
 
 func _headbob(time: float) -> Vector3:
 	var pos = Vector3.ZERO

@@ -72,3 +72,8 @@ func _physics_process(delta):
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	move_and_slide()
+
+func shake_camera(period: float = 0.3, magnitude: float = 0.01):
+	camera.period = period
+	camera.magnitude = magnitude
+	camera.should_shake = true
