@@ -22,24 +22,33 @@ var additional_bobbers: Array[Node3D] = []
 var bob_freqs = {}
 var bob_amps = {}
 
+var can_turn := true
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Globals.player = self
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and can_turn:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("use_tool"):
-		right_hand_holding.get_child(0).use()
-	elif Input.is_action_just_released("use_tool"):
-		right_hand_holding.get_child(0).reset()
+	if can_turn:
+		if Input.is_action_pressed("use_tool"):
+			right_hand_holding.get_child(0).use()
+		elif Input.is_action_just_released("use_tool"):
+			right_hand_holding.get_child(0).reset()
 	
 	if Input.is_action_just_pressed("toggle_inventory"):
 		$HUD/InventoryNode.visible = not $HUD/InventoryNode.visible
+		if $HUD/InventoryNode.visible:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			can_turn = false
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			can_turn = true
 
 func _physics_process(delta):
 	# Add the gravity.
