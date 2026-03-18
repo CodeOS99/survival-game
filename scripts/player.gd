@@ -24,6 +24,8 @@ var bob_amps = {}
 
 var can_turn := true
 
+@onready var inventory: InventoryNode = $HUD/InventoryNode
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Globals.player = self
