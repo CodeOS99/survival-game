@@ -96,9 +96,11 @@ text = "E to collect"
 
 [node name="Inv" type="VBoxContainer" parent="HUD" unique_id=1975376117]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 0.35200003
 anchor_bottom = 1.0
+offset_right = 390.92004
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -107,3 +109,5 @@ layout_mode = 2
 
 [node name="CraftingMenu" parent="HUD/Inv" unique_id=210753137 instance=ExtResource("8_smehm")]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
