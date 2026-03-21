@@ -51,20 +51,34 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	return false
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
-	if self.slot_data:
-		if self.slot_data.item.title == data.slot_data.item.title:
-			var transfer_amount = min(self.slot_data.amount + data.slot_data.amount, slot_data.item.max_stack)
-			data.slot_data.amount -= (transfer_amount - self.slot_data.amount)
-			self.slot_data.amount = transfer_amount
-	else:
-		self.slot_data = data.slot_data
-	data.slot_data = null
-	
-	self.update_visuals()
-	data.update_visuals()
-	
-	swapped.emit(data.get_index(), self.get_index())
-	
+	if data is InventorySlot and data.get_parent() == self.get_parent(): # Slots of same inventory
+		if self.slot_data:
+			if self.slot_data.item.title == data.slot_data.item.title:
+				var transfer_amount = min(self.slot_data.amount + data.slot_data.amount, slot_data.item.max_stack)
+				data.slot_data.amount -= (transfer_amount - self.slot_data.amount)
+				self.slot_data.amount = transfer_amount
+		else:
+			self.slot_data = data.slot_data
+		data.slot_data = null
+		
+		self.update_visuals()
+		data.update_visuals()
+		
+		swapped.emit(data.get_index(), self.get_index())
+	elif data is CraftingSlot:
+		if self.slot_data:
+			if self.slot_data.item.title == data.slot_data.item.title:
+				var transfer_amount = min(self.slot_data.amount + data.slot_data.amount, slot_data.item.max_stack)
+				data.slot_data.amount -= (transfer_amount - self.slot_data.amount)
+				self.slot_data.amount = transfer_amount
+		else:
+			self.slot_data = data.slot_data
+		data.slot_data = null
+		
+		self.update_visuals()
+		data.update_visuals()
+		
+		swapped.emit(-1, self.get_index())
 
 func update_visuals():
 	if slot_data:

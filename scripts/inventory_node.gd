@@ -55,7 +55,11 @@ func update_visuals():
 		slot.swapped.connect(_on_slot_swap)
 
 func _on_slot_swap(from: int, to: int):
-	if to != -1:
+	if from == -1: # new item added at index to
+		inventory_data.slot_datas[to] = $GridContainer.get_child(to).slot_data
+	elif to == -1: # item taken away from this inv to another context:
+		inventory_data.slot_datas[from] = null
+	else: # slot on same inv to itself
 		var a = inventory_data.slot_datas[from]
 		var b = inventory_data.slot_datas[to]
 		inventory_data.slot_datas[from] = inventory_data.slot_datas[to]
@@ -68,6 +72,3 @@ func _on_slot_swap(from: int, to: int):
 		else:
 			b = a
 		a = null
-
-	else:
-		inventory_data.slot_datas[from] = null
