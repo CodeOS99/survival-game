@@ -4,6 +4,9 @@ func _on_pressed() -> void:
 	# no need to add any check since if it is enabled, a valid recipe is present
 	var recipe: CraftingRecipe = $"../../..".curr_valid_recipe
 	
+	if not recipe:
+		return
+	
 	if recipe.result_amount > Globals.player.inventory.max_additions(recipe.result):
 		return # exceeding max addition
 	
