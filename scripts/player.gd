@@ -40,9 +40,13 @@ func _unhandled_input(event):
 func _process(delta: float) -> void:
 	if can_turn:
 		if Input.is_action_pressed("use_tool"):
-			right_hand_holding.get_child(0).use()
+			if right_hand_holding.get_child(0):
+				if right_hand_holding.get_child(0).is_in_group("usable"):
+					right_hand_holding.get_child(0).use()
 		elif Input.is_action_just_released("use_tool"):
-			right_hand_holding.get_child(0).reset()
+			if right_hand_holding.get_child(0):
+				if right_hand_holding.get_child(0).is_in_group("usable"):
+					right_hand_holding.get_child(0).reset()
 	
 	if Input.is_action_just_pressed("toggle_inventory"):
 		$HUD/Inv.visible = not $HUD/Inv.visible

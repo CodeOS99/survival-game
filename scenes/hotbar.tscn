@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dmpvhi8tyd2lw"]
 
+[ext_resource type="Script" uid="uid://c7nxn84x2ibkb" path="res://scripts/hotbar.gd" id="1_4qkdb"]
 [ext_resource type="PackedScene" uid="uid://1bcjvxipbhq4" path="res://scenes/hotbar_slot.tscn" id="1_yj1xu"]
 
 [node name="Hotbar" type="Control" unique_id=929065246]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4qkdb")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1174529699]
 layout_mode = 1

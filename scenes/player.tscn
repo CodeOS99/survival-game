@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dq5kfvau2w5pa" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b0psllwpsmiqp" path="res://scripts/camera_3d.gd" id="2_tuyoq"]
-[ext_resource type="PackedScene" uid="uid://crugdpxv86li0" path="res://scenes/axe.tscn" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://bmp6ypcg1wa0l" path="res://scripts/bobber.gd" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://h0ake6u10bko" path="res://assets/crosshairs/crosshair186.png" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://dwjsj5fg723p5" path="res://scripts/item_pickup_raycast.gd" id="4_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://id52tg434msp" path="res://scenes/inventory_node.tscn" id="7_fjrip"]
 [ext_resource type="PackedScene" uid="uid://dqsd06vdicy1a" path="res://scenes/crafting_menu.tscn" id="8_smehm"]
 [ext_resource type="PackedScene" uid="uid://dmpvhi8tyd2lw" path="res://scenes/hotbar.tscn" id="9_ur7pv"]
+[ext_resource type="Script" uid="uid://c7nxn84x2ibkb" path="res://scripts/hotbar.gd" id="9_y4r1p"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
@@ -35,8 +35,6 @@ script = ExtResource("2_tuyoq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86, -0.615, -1.125)
 
 [node name="Holding" type="Node3D" parent="Head/Camera3D/Hands/HandRight" unique_id=527588064]
-
-[node name="Axe" parent="Head/Camera3D/Hands/HandRight/Holding" unique_id=1984661410 instance=ExtResource("3_dqkch")]
 
 [node name="RightHandBobber" type="Node3D" parent="Head/Camera3D/Hands/HandRight/Holding" unique_id=436207194]
 script = ExtResource("3_qhqgy")
@@ -125,3 +123,4 @@ offset_top = -218.025
 offset_right = 398.0
 offset_bottom = -8.025635
 grow_vertical = 0
+script = ExtResource("9_y4r1p")

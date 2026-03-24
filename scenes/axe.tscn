@@ -70,7 +70,7 @@ size = Vector3(0.025813837, 0.25599998, 0.030927)
 [sub_resource type="BoxShape3D" id="BoxShape3D_8s0ly"]
 size = Vector3(0.10111898, 0.071568355, 0.030927)
 
-[node name="Axe" type="Node3D" unique_id=1984661410]
+[node name="Axe" type="Node3D" unique_id=1984661410 groups=["usable"]]
 transform = Transform3D(0.53064436, 0, -0.8475946, 0, 1, 0, 0.8475946, 0, 0.53064436, 0, 0, 0)
 script = ExtResource("1_725vr")
 
