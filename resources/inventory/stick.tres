@@ -8,5 +8,4 @@ script = ExtResource("1_jvjgn")
 title = "Stick"
 description = "loong wood"
 texture = ExtResource("2_b657f")
-max_stack = 1
 metadata/_custom_type_script = "uid://dqotofq0kbye"

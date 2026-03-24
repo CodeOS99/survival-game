@@ -3,14 +3,7 @@
 [ext_resource type="Script" uid="uid://dqotofq0kbye" path="res://scripts/item_data.gd" id="1_3i55t"]
 [ext_resource type="Script" uid="uid://bthj8ewvjv1wj" path="res://scripts/crafting_recipe.gd" id="2_lgexy"]
 [ext_resource type="Resource" uid="uid://d3w8jmykbe1p2" path="res://resources/inventory/log.tres" id="2_oaqyk"]
-[ext_resource type="Texture2D" uid="uid://dhg3ercbhfgoe" path="res://assets/inventory_item_images/stickResource.png" id="3_oaqyk"]
-
-[sub_resource type="Resource" id="Resource_giphb"]
-script = ExtResource("1_3i55t")
-title = "Stick"
-description = "loong wood"
-texture = ExtResource("3_oaqyk")
-metadata/_custom_type_script = "uid://dqotofq0kbye"
+[ext_resource type="Resource" uid="uid://beb1ny5psepmd" path="res://resources/inventory/stick.tres" id="3_oaqyk"]
 
 [resource]
 script = ExtResource("2_lgexy")
@@ -18,6 +11,6 @@ n = 2
 items = Array[ExtResource("1_3i55t")]([ExtResource("2_oaqyk"), ExtResource("2_oaqyk")])
 pos = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, -1)])
 amounts = Array[int]([1, 1])
-result = SubResource("Resource_giphb")
+result = ExtResource("3_oaqyk")
 result_amount = 4
 metadata/_custom_type_script = "uid://bthj8ewvjv1wj"

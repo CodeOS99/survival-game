@@ -47,6 +47,8 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 		if self.is_empty(): # if the current slot doesn't have anything
 			return true
 		if self.slot_data.item.title == data.slot_data.item.title: # occupied but same item
+			if self.slot_data.item.max_stack - self.slot_data.amount < data.slot_data.amount:
+				return false # this would cause going more than max stack
 			return true
 	return false
 

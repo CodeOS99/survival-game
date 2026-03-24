@@ -46,8 +46,10 @@ func add_item(item: ItemData, amount: int = 1) -> bool:
 	else: # empty
 		var data:SlotData = SlotData.new()
 		data.item = item
-		data.amount = amount
+		var possible_additions = min(amount, item.max_stack)
+		data.amount = possible_additions
 		inventory_data.slot_datas[slot_idx] = data
+		add_item(item, amount-possible_additions)
 	
 	update_visuals()
 	return true
