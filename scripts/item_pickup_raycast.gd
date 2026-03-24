@@ -3,6 +3,8 @@ extends RayCast3D
 var prev_body: Node3D
 var looking_at := false
 
+
+
 func _physics_process(delta: float) -> void:
 	if self.is_colliding():
 		var body = self.get_collider()
