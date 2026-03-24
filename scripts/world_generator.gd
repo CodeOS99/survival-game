@@ -10,7 +10,7 @@ var chunks = {}
 var last_player_chunk := Vector2i(999999, 999999)
 
 var tree := preload("res://scenes/tree_long.tscn")
-var small_stone := preload("res://scenes/small_stone.tscn")
+var small_stone := preload("res://scenes/small_stone_collectible.tscn")
 
 var obj_noise: FastNoiseLite
 

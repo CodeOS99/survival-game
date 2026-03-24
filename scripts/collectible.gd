@@ -3,6 +3,8 @@ extends Node3D
 @export var outline_mesh: MeshInstance3D
 @export var item: ItemData
 
+var using = false
+
 func _ready() -> void:
 	if outline_mesh == null:
 		if $OutlineMesh:

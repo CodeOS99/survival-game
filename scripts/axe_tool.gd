@@ -7,6 +7,9 @@ var hit_trees = [] # if performance becomes an issue i could give every tree and
 
 var tree_particle = preload("res://scenes/tree_blast_particles.tscn")
 
+@export var particle_point: Node3D
+@export var max_per_swing: int = 1
+
 func use():
 	$AnimationPlayer.play("lmb")
 	using = true
@@ -22,7 +25,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _process(delta: float) -> void:
 	if using:
 		for body in area.get_overlapping_bodies():
-			if body.is_in_group("Tree") and body not in hit_trees:
+			if body.is_in_group("Tree") and body not in hit_trees and len(hit_trees)+1 <= max_per_swing:
 				if body.chopped():
 					body.queue_free()
 				hit_trees.append(body)
@@ -31,5 +34,5 @@ func _process(delta: float) -> void:
 func spawn_tree_particle():
 	var particles = tree_particle.instantiate()
 	get_tree().root.add_child(particles)
-	particles.global_position = $"Mesh/tool-axe/ParticlePoint".global_position
+	particles.global_position = particle_point.global_position
 	particles.emitting = true

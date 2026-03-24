@@ -28,6 +28,7 @@ var bob_amps = {}
 var can_turn := true
 
 var updated_held_once = false
+var curr_held_item: ItemData = null
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -41,10 +42,11 @@ func _unhandled_input(event):
 
 func _process(delta: float) -> void:
 	if can_turn:
-		if Input.is_action_pressed("use_tool"):
+		if Input.is_action_just_pressed("use_tool"):
 			if right_hand_holding.get_child(0):
 				if right_hand_holding.get_child(0).is_in_group("usable"):
-					right_hand_holding.get_child(0).use()
+					if not right_hand_holding.get_child(0).using:
+						right_hand_holding.get_child(0).use()
 		elif Input.is_action_just_released("use_tool"):
 			if right_hand_holding.get_child(0):
 				if right_hand_holding.get_child(0).is_in_group("usable"):
@@ -61,10 +63,17 @@ func _process(delta: float) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			can_turn = true
 
-# TODO do sum w this ;-;
 func update_held_item():
 	var item := hotbar.get_active_item()
 	
+	if curr_held_item == item:
+		return
+	
+	if item == null:
+		if curr_held_item:
+			$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
+			curr_held_item = item
+			
 	if item:
 		if updated_held_once:
 			$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
@@ -76,6 +85,8 @@ func update_held_item():
 		
 		if not updated_held_once:
 			updated_held_once = true
+	
+	curr_held_item = item
 
 func _physics_process(delta):
 	# Add the gravity.

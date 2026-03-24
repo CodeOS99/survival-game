@@ -70,9 +70,11 @@ size = Vector3(0.025813837, 0.25599998, 0.030927)
 [sub_resource type="BoxShape3D" id="BoxShape3D_8s0ly"]
 size = Vector3(0.10111898, 0.071568355, 0.030927)
 
-[node name="Axe" type="Node3D" unique_id=1984661410 groups=["usable"]]
+[node name="Axe" type="Node3D" unique_id=1984661410 node_paths=PackedStringArray("particle_point") groups=["usable"]]
 transform = Transform3D(0.53064436, 0, -0.8475946, 0, 1, 0, 0.8475946, 0, 0.53064436, 0, 0, 0)
 script = ExtResource("1_725vr")
+particle_point = NodePath("Mesh/tool-axe/ParticlePoint")
+max_per_swing = 5
 
 [node name="Mesh" parent="." unique_id=1974760275 instance=ExtResource("1_odgf8")]
 transform = Transform3D(3.777092, -1.3546087e-07, -1.3166533, 1.0674833e-07, 4, -1.0530123e-07, 1.3166533, 6.429548e-08, 3.777092, 0, 0, 0)

@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://daad1lsqodfcy"]
 
-[ext_resource type="Script" uid="uid://bx3ichle3w8t8" path="res://scripts/collectible.gd" id="1_ig3ib"]
-[ext_resource type="PackedScene" uid="uid://cvcmpj8wbu65o" path="res://assets/simpleRock/simple_stone.blend" id="1_ynxxs"]
-[ext_resource type="Resource" uid="uid://qlxvjxajrrlv" path="res://resources/inventory/small_stone.tres" id="2_3uqwa"]
-[ext_resource type="Texture2D" uid="uid://cqkssnb5ber4h" path="res://assets/simpleRock/textures/Image_0.png" id="2_y87lk"]
+[ext_resource type="Script" uid="uid://bx3ichle3w8t8" path="res://scripts/collectible.gd" id="1_8uoyo"]
+[ext_resource type="PackedScene" uid="uid://cvcmpj8wbu65o" path="res://assets/simpleRock/simple_stone.blend" id="2_oita1"]
+[ext_resource type="Resource" uid="uid://qlxvjxajrrlv" path="res://resources/inventory/small_stone.tres" id="2_w1rd0"]
+[ext_resource type="Texture2D" uid="uid://cqkssnb5ber4h" path="res://assets/simpleRock/textures/Image_0.png" id="3_w1rd0"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pg0ud"]
 _surfaces = [{
@@ -24,7 +24,7 @@ points = PackedVector3Array(-0.16401464, -0.050149493, 1.9208528e-09, 0.09852195
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvhfi"]
 resource_name = "Scene_-_Root"
 cull_mode = 2
-albedo_texture = ExtResource("2_y87lk")
+albedo_texture = ExtResource("3_w1rd0")
 roughness = 0.6
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ig3ib"]
@@ -61,11 +61,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ig3ib")
 
-[node name="small_stone" type="StaticBody3D" unique_id=1578642029 node_paths=PackedStringArray("outline_mesh") groups=["Collectible"]]
+[node name="SmallStoneCollectible" type="StaticBody3D" unique_id=1578642029 groups=["Collectible"]]
 collision_layer = 2
-script = ExtResource("1_ig3ib")
-outline_mesh = NodePath("")
-item = ExtResource("2_3uqwa")
+script = ExtResource("1_8uoyo")
+item = ExtResource("2_w1rd0")
 
 [node name="OutlineMesh" type="MeshInstance3D" parent="." unique_id=1833660894]
 transform = Transform3D(1.5004772, 0, 0, 0, 8.943539e-08, 1.5004772, 0, -1.5004772, 8.943539e-08, 0, 0, 0)
@@ -76,7 +75,7 @@ mesh = SubResource("ArrayMesh_pg0ud")
 transform = Transform3D(1.5004772, 0, 0, 0, 8.943539e-08, 1.5004772, 0, -1.5004772, 8.943539e-08, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_ig3ib")
 
-[node name="simple_stone" parent="." unique_id=385494136 instance=ExtResource("1_ynxxs")]
+[node name="simple_stone" parent="." unique_id=385494136 instance=ExtResource("2_oita1")]
 
 [node name="Cube_011__0" parent="simple_stone/Sketchfab_model/ROCK_LOW_POLY_ASSET_PACK_fbx/RootNode/Cube_012" parent_id_path=PackedInt32Array(385494136, 994486965) index="0" unique_id=694948584]
 mesh = SubResource("ArrayMesh_3uqwa")
