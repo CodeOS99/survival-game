@@ -65,24 +65,31 @@ func update_visuals():
 		$GridContainer.add_child(slot)
 		slot.swapped.connect(_on_slot_swap)
 
-func _on_slot_swap(from: int, to: int):
-	if from == -1: # new item added at index to
+func _on_slot_swap(from: int, to: int): # TODO fix please
+	if from == -1:
 		inventory_data.slot_datas[to] = $GridContainer.get_child(to).slot_data
-	elif to == -1: # item taken away from this inv to another context:
+		return
+	
+	if to == -1:
 		inventory_data.slot_datas[from] = null
-	else: # slot on same inv to itself
-		var a = inventory_data.slot_datas[from]
-		var b = inventory_data.slot_datas[to]
-		inventory_data.slot_datas[from] = inventory_data.slot_datas[to]
+		return
+
+	var a = inventory_data.slot_datas[from]
+	var b = inventory_data.slot_datas[to]
+
+	if a and b and a.item.title == b.item.title:
+		var transfer = min(a.amount, b.item.max_stack - b.amount)
+		b.amount += transfer
+		a.amount -= transfer
+		
+		if a.amount <= 0:
+			inventory_data.slot_datas[from] = null
+	
+	else:
+		inventory_data.slot_datas[from] = b
 		inventory_data.slot_datas[to] = a
-		if b:
-			if a.item.title == b.item.title:
-				var transfer_amount = min(a.amount + b.amount, a.item.max_stack)
-				a.amount -= (transfer_amount - self.slot_data.amount)
-				b.amount = transfer_amount
-		else:
-			b = a
-		a = null
+
+	update_visuals()
 
 func max_additions(item: ItemData) -> int:
 	# returns the maximum amount of an item that can be added
