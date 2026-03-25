@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var damage_per_swing = 1
+
 @onready var area: Area3D = $Area3D
 
 var using: bool = false
@@ -26,7 +28,7 @@ func _process(delta: float) -> void:
 	if using:
 		for body in area.get_overlapping_bodies():
 			if body.is_in_group("Tree") and body not in hit_trees and len(hit_trees)+1 <= max_per_swing:
-				if body.chopped():
+				if body.chopped(damage_per_swing):
 					body.queue_free()
 				hit_trees.append(body)
 				spawn_tree_particle()

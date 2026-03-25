@@ -73,6 +73,7 @@ size = Vector3(0.10111898, 0.071568355, 0.030927)
 [node name="Axe" type="Node3D" unique_id=1984661410 node_paths=PackedStringArray("particle_point") groups=["usable"]]
 transform = Transform3D(0.53064436, 0, -0.8475946, 0, 1, 0, 0.8475946, 0, 0.53064436, 0, 0, 0)
 script = ExtResource("1_725vr")
+damage_per_swing = 2
 particle_point = NodePath("Mesh/tool-axe/ParticlePoint")
 max_per_swing = 5
 

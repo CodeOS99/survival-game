@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://hlq8e37b3p5y"]
+
+[ext_resource type="PackedScene" uid="uid://crugdpxv86li0" path="res://scenes/axe.tscn" id="1_gs6cs"]
+[ext_resource type="Script" uid="uid://dqotofq0kbye" path="res://scripts/item_data.gd" id="1_yie3q"]
+[ext_resource type="Texture2D" uid="uid://e0cgs7l6cov" path="res://assets/inventory_item_images/stone_axe.png" id="3_gr6w0"]
+
+[resource]
+script = ExtResource("1_yie3q")
+title = "Stone Axe"
+description = "Axe of Stone"
+texture = ExtResource("3_gr6w0")
+mesh = ExtResource("1_gs6cs")
+max_stack = 1
+metadata/_custom_type_script = "uid://dqotofq0kbye"

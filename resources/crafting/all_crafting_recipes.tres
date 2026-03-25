@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://bthj8ewvjv1wj" path="res://scripts/crafting_recipe.gd" id="1_6rjdm"]
 [ext_resource type="Resource" uid="uid://bc1q8iadd7t2h" path="res://resources/crafting/recipes/stick.tres" id="2_cq8pq"]
 [ext_resource type="Script" uid="uid://dvpvcplwy0rnt" path="res://scripts/all_crafting_recipes.gd" id="2_lue5t"]
+[ext_resource type="Resource" uid="uid://da4uyu3llhe4b" path="res://resources/crafting/recipes/StoneAxe.tres" id="3_cq8pq"]
 
 [resource]
 script = ExtResource("2_lue5t")
-recipes = Array[ExtResource("1_6rjdm")]([ExtResource("2_cq8pq")])
+recipes = Array[ExtResource("1_6rjdm")]([ExtResource("2_cq8pq"), ExtResource("3_cq8pq")])
 metadata/_custom_type_script = "uid://dvpvcplwy0rnt"

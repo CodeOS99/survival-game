@@ -90,6 +90,7 @@ func update_visuals():
 	else:
 		texture_rect.texture = null
 		amt_label.text = ""
+
 func remove_item(amount: int):
 	if self.slot_data:
 		self.slot_data.amount -= amount

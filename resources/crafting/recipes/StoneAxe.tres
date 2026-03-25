@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://da4uyu3llhe4b"]
+
+[ext_resource type="Script" uid="uid://dqotofq0kbye" path="res://scripts/item_data.gd" id="1_pxill"]
+[ext_resource type="Resource" uid="uid://qlxvjxajrrlv" path="res://resources/inventory/small_stone.tres" id="2_do1bx"]
+[ext_resource type="Script" uid="uid://bthj8ewvjv1wj" path="res://scripts/crafting_recipe.gd" id="2_fm3i0"]
+[ext_resource type="Resource" uid="uid://beb1ny5psepmd" path="res://resources/inventory/stick.tres" id="3_gxlhr"]
+[ext_resource type="Resource" uid="uid://hlq8e37b3p5y" path="res://resources/inventory/stone_axe.tres" id="4_t0ftq"]
+
+[resource]
+script = ExtResource("2_fm3i0")
+n = 5
+items = Array[ExtResource("1_pxill")]([ExtResource("2_do1bx"), ExtResource("2_do1bx"), ExtResource("3_gxlhr"), ExtResource("2_do1bx"), ExtResource("3_gxlhr")])
+pos = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(0, 2)])
+amounts = Array[int]([1, 1, 1, 1, 1])
+result = ExtResource("4_t0ftq")
+result_amount = 1
+metadata/_custom_type_script = "uid://bthj8ewvjv1wj"

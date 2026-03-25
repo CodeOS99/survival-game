@@ -9,7 +9,7 @@
 script = ExtResource("2_lgexy")
 n = 2
 items = Array[ExtResource("1_3i55t")]([ExtResource("2_oaqyk"), ExtResource("2_oaqyk")])
-pos = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, -1)])
+pos = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
 amounts = Array[int]([1, 1])
 result = ExtResource("3_oaqyk")
 result_amount = 4

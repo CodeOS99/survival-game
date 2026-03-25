@@ -38,7 +38,6 @@ func _process(delta: float) -> void:
 				prev_recipe_start = i
 				if not grid[i].amount >= recipe.amounts[0]: # not enough first slot
 					continue
-				used_slots.append(i)
 				var valid = true
 				for j in range(1, len(recipe.pos)): # check if the other items are in place
 					# i -> the slot index in the crafing menu
@@ -52,14 +51,12 @@ func _process(delta: float) -> void:
 					if (x_coord + pos.x >= SIDE_LENGTH or x_coord + pos.x < 0) or (y_coord + pos.y >= SIDE_LENGTH or y_coord + pos.y < 0):
 						valid = false
 						break
-					
 					var new_i = x_coord + pos.x + (y_coord + pos.y) * SIDE_LENGTH
 					
 					if new_i < len(grid): # in range
 						if not grid[new_i]: # no way for this to match the recipe's j^th item since its null
 							valid = false
 							break
-						
 						if not grid[new_i].item == recipe.items[j]: # not matching
 							valid = false
 							break
@@ -75,9 +72,7 @@ func _process(delta: float) -> void:
 					continue
 			else:
 				continue
-			
 			# the pattern is matched, but there may be extra items
-			
 			var nothing_extra = true
 			for j in range(len(grid)):
 				if j not in used_slots:
