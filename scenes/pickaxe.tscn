@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://xjvrxfpoioq5"]
+
+[ext_resource type="Script" uid="uid://b2wrakmt2x1ub" path="res://scripts/pickaxe_tool.gd" id="1_2ikqw"]
+[ext_resource type="PackedScene" uid="uid://dcdgx0pgeua74" path="res://assets/kenneysSurvivalKit/GLB format/tool-pickaxe.glb" id="1_40cab"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_40cab"]
+size = Vector3(0.09140015, 0.7993164, 0.12036133)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ikqw"]
+size = Vector3(0.6960449, 0.11413574, 0.12182617)
+
+[sub_resource type="Animation" id="Animation_2ikqw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.012291, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_40cab"]
+resource_name = "lmb"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96, 2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1, -0.4173442, -0.39202607), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96, 2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector3(0, -1.012291, 0), Vector3(-0.66741574, -1.5955778, 2.2712502), Vector3(0, -1.012291, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ikqw"]
+_data = {
+&"RESET": SubResource("Animation_2ikqw"),
+&"lmb": SubResource("Animation_40cab")
+}
+
+[node name="pickaxe" type="Node3D" unique_id=1999466012 groups=["usable"]]
+transform = Transform3D(0.5299193, 0, -0.8480482, 0, 1.0000001, 0, 0.8480482, 0, 0.5299193, 0, 0, 0)
+script = ExtResource("1_2ikqw")
+
+[node name="tool-pickaxe2" parent="." unique_id=370684419 instance=ExtResource("1_40cab")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=155841833]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1734659359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009292603, 0.41235352, 0.01574707)
+shape = SubResource("BoxShape3D_40cab")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1885187801]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0037841797, 0.878479, -0.00012207031)
+shape = SubResource("BoxShape3D_2ikqw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=809665141]
+libraries/ = SubResource("AnimationLibrary_2ikqw")
+speed_scale = 2.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -88,7 +88,6 @@ func update_held_item():
 		instance.scale = Vector3(item.mesh_scale, item.mesh_scale, item.mesh_scale)
 		$Head/Camera3D/Hands/HandRight/Holding.add_child(instance)
 		$Head/Camera3D/Hands/HandRight/Holding.move_child(instance, 0)
-		item.
 		
 		if not updated_held_once:
 			updated_held_once = true

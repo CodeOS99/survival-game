@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dardggqyb5tqy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87nc8"]
+albedo_color = Color(0.30249536, 0.3024954, 0.3024954, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_87nc8"]
+spread = 180.0
+initial_velocity_min = -15.0
+initial_velocity_max = 15.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_gx7ll"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="ore_particles" type="GPUParticles3D" unique_id=1807600429]
+material_override = SubResource("StandardMaterial3D_87nc8")
+emitting = false
+amount = 24
+lifetime = 0.25
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_87nc8")
+draw_pass_1 = SubResource("BoxMesh_gx7ll")
