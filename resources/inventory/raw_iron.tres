@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://beu5y818ayqdw"]
+
+[ext_resource type="Script" uid="uid://dqotofq0kbye" path="res://scripts/item_data.gd" id="1_phd3o"]
+[ext_resource type="PackedScene" uid="uid://cn1fsrm80ft1t" path="res://assets/ironIngot/rawIron.blend" id="1_pkq6k"]
+[ext_resource type="Texture2D" uid="uid://h5f62jxij1x" path="res://assets/inventory_item_images/raw_iron.png" id="3_ikoha"]
+
+[resource]
+script = ExtResource("1_phd3o")
+title = "Raw Iron"
+description = "Iron that is raw"
+texture = ExtResource("3_ikoha")
+mesh = ExtResource("1_pkq6k")
+mesh_scale = 0.2
+metadata/_custom_type_script = "uid://dqotofq0kbye"

@@ -9,7 +9,7 @@ var base_position: Vector3
 var time := 0.0
 var landed := false
 
-var item: ItemData = preload("res://resources/inventory/iron_ingot.tres")
+var item: ItemData = preload("res://resources/inventory/raw_iron.tres")
 
 func _ready() -> void:
 	var dir = Vector3(randf_range(-0.5,0.5), 0, randf_range(-0.5,0.5)).normalized()

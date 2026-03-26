@@ -2,7 +2,7 @@ extends StaticBody3D
 
 @onready var mesh = $"mesh"
 
-var popout_mineral = preload("res://scenes/popout_iron_ingot.tscn")
+var popout_mineral = preload("res://scenes/popout_raw_iron.tscn")
 
 const MAX_HEALTH: float = 20.0
 var health: int = MAX_HEALTH
