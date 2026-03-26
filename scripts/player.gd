@@ -32,10 +32,13 @@ var curr_held_item: ItemData = null
 
 var step_timer := 0.0
 var step_interval := 0.5 # base interval
+var footstep_players: Array
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Globals.player = self
+	
+	footstep_players = $Footsteps.get_children()
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and can_turn:
@@ -44,13 +47,6 @@ func _unhandled_input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 
 func _process(delta: float) -> void:
-	if Vector2(velocity.x, velocity.z).length() > .2:
-		if not ($AudioStreamPlayer.playing or  $AudioStreamPlayer2.playing or  $AudioStreamPlayer3.playing):
-			[$AudioStreamPlayer, $AudioStreamPlayer2, $AudioStreamPlayer3].pick_random().play()
-	else:
-		$AudioStreamPlayer.stop()
-		$AudioStreamPlayer2.stop()
-		$AudioStreamPlayer3.stop()
 	if can_turn:
 		if Input.is_action_just_pressed("use_tool"):
 			if right_hand_holding.get_child(0):
@@ -99,20 +95,21 @@ func update_held_item():
 	curr_held_item = item
 
 func _physics_process(delta):
-	var is_moving := Vector2(velocity.x, velocity.z).length() > 0.2
+	var horizontal_speed = Vector2(velocity.x, velocity.z).length()
+	var is_moving := Input.get_vector("left", "right", "up", "down") != Vector2.ZERO
 
 	if is_on_floor() and is_moving:
 		step_timer -= delta
 		
-		# Adjust step speed based on movement speed
-		var speed_ratio = clamp(velocity.length() / SPRINT_SPEED, 0.5, 1.5)
+		# Faster steps when moving faster
+		var speed_ratio = clamp(horizontal_speed / SPRINT_SPEED, 0.4, 1.4)
 		var current_interval = step_interval / speed_ratio
 		
 		if step_timer <= 0:
-			play_footstep()
+			play_footstep(speed_ratio)
 			step_timer = current_interval
 	else:
-		step_timer = 0
+		step_timer = 0.0
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -148,11 +145,14 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func play_footstep():
-	var players = [$AudioStreamPlayer, $AudioStreamPlayer2, $AudioStreamPlayer3]
-	var player = players.pick_random()
+func play_footstep(speed_ratio: float):
+	var player = footstep_players.pick_random()
 	
-	player.pitch_scale = randf_range(0.9, 1.1)
+	var base_pitch = lerp(0.9, 1.2, speed_ratio)
+	player.pitch_scale = base_pitch + randf_range(-0.05, 0.05)
+	
+	player.volume_db = randf_range(-3.0, 0.0)
+	
 	player.play()
 
 func shake_camera(period: float = 0.3, magnitude: float = 0.01):
