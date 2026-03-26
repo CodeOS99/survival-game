@@ -30,6 +30,9 @@ var can_turn := true
 var updated_held_once = false
 var curr_held_item: ItemData = null
 
+var step_timer := 0.0
+var step_interval := 0.5 # base interval
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Globals.player = self
@@ -41,6 +44,13 @@ func _unhandled_input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 
 func _process(delta: float) -> void:
+	if Vector2(velocity.x, velocity.z).length() > .2:
+		if not ($AudioStreamPlayer.playing or  $AudioStreamPlayer2.playing or  $AudioStreamPlayer3.playing):
+			[$AudioStreamPlayer, $AudioStreamPlayer2, $AudioStreamPlayer3].pick_random().play()
+	else:
+		$AudioStreamPlayer.stop()
+		$AudioStreamPlayer2.stop()
+		$AudioStreamPlayer3.stop()
 	if can_turn:
 		if Input.is_action_just_pressed("use_tool"):
 			if right_hand_holding.get_child(0):
@@ -89,6 +99,21 @@ func update_held_item():
 	curr_held_item = item
 
 func _physics_process(delta):
+	var is_moving := Vector2(velocity.x, velocity.z).length() > 0.2
+
+	if is_on_floor() and is_moving:
+		step_timer -= delta
+		
+		# Adjust step speed based on movement speed
+		var speed_ratio = clamp(velocity.length() / SPRINT_SPEED, 0.5, 1.5)
+		var current_interval = step_interval / speed_ratio
+		
+		if step_timer <= 0:
+			play_footstep()
+			step_timer = current_interval
+	else:
+		step_timer = 0
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -122,6 +147,13 @@ func _physics_process(delta):
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	move_and_slide()
+
+func play_footstep():
+	var players = [$AudioStreamPlayer, $AudioStreamPlayer2, $AudioStreamPlayer3]
+	var player = players.pick_random()
+	
+	player.pitch_scale = randf_range(0.9, 1.1)
+	player.play()
 
 func shake_camera(period: float = 0.3, magnitude: float = 0.01):
 	camera.period = period

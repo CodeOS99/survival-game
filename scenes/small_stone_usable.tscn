@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cwuc2egieidna" path="res://scripts/axe_tool.gd" id="1_0rmn0"]
 [ext_resource type="PackedScene" uid="uid://cvcmpj8wbu65o" path="res://assets/simpleRock/simple_stone.blend" id="1_iynhe"]
 [ext_resource type="Texture2D" uid="uid://cqkssnb5ber4h" path="res://assets/simpleRock/textures/Image_0.png" id="2_0rmn0"]
+[ext_resource type="PackedScene" uid="uid://dn3ujtql2ta1v" path="res://scenes/stone_break_particles.tscn" id="2_fr4ul"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvhfi"]
 resource_name = "Scene_-_Root"
@@ -86,6 +87,7 @@ _data = {
 [node name="small_stone_usable" type="Node3D" unique_id=150653462 node_paths=PackedStringArray("particle_point") groups=["usable"]]
 script = ExtResource("1_0rmn0")
 particle_point = NodePath("simple_stone/Sketchfab_model/ROCK_LOW_POLY_ASSET_PACK_fbx/RootNode/Cube_012/ParticlePoint")
+break_particles = ExtResource("2_fr4ul")
 
 [node name="simple_stone" parent="." unique_id=385494136 instance=ExtResource("1_iynhe")]
 
@@ -103,6 +105,37 @@ shape = SubResource("ConvexPolygonShape3D_xo5q0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=248418250]
 libraries/ = SubResource("AnimationLibrary_xo5q0")
+
+[node name="Control" type="Control" parent="." unique_id=1261223162]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 89.0
+grow_horizontal = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=640737858]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_right = 136.0
+offset_bottom = 27.0
+grow_horizontal = 2
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Control/ProgressBar" unique_id=1547492876]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Durability"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 

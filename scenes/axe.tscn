@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cwuc2egieidna" path="res://scripts/axe_tool.gd" id="1_725vr"]
 [ext_resource type="PackedScene" uid="uid://4t46l0qdk5y1" path="res://assets/kenneysSurvivalKit/GLB format/tool-axe.glb" id="1_odgf8"]
+[ext_resource type="PackedScene" uid="uid://dn3ujtql2ta1v" path="res://scenes/stone_break_particles.tscn" id="2_8s0ly"]
+[ext_resource type="AudioStream" uid="uid://b8iaapny3jkas" path="res://assets/sound/sfx/break_sfx.mp3" id="4_q6140"]
 
 [sub_resource type="Animation" id="Animation_odgf8"]
 length = 0.001
@@ -74,8 +76,10 @@ size = Vector3(0.10111898, 0.071568355, 0.030927)
 transform = Transform3D(0.53064436, 0, -0.8475946, 0, 1, 0, 0.8475946, 0, 0.53064436, 0, 0, 0)
 script = ExtResource("1_725vr")
 damage_per_swing = 2
+max_durability = 100
 particle_point = NodePath("Mesh/tool-axe/ParticlePoint")
 max_per_swing = 5
+break_particles = ExtResource("2_8s0ly")
 
 [node name="Mesh" parent="." unique_id=1974760275 instance=ExtResource("1_odgf8")]
 transform = Transform3D(3.777092, -1.3546087e-07, -1.3166533, 1.0674833e-07, 4, -1.0530123e-07, 1.3166533, 6.429548e-08, 3.777092, 0, 0, 0)
@@ -97,6 +101,40 @@ shape = SubResource("BoxShape3D_725vr")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1371507028]
 transform = Transform3D(3.9987574, -1.09333925e-07, -0.09947306, 1.0674833e-07, 4, -1.0530123e-07, 0.09947306, 1.0261387e-07, 3.9987574, -0.082175136, 0.8808632, -0.035581082)
 shape = SubResource("BoxShape3D_8s0ly")
+
+[node name="Control" type="Control" parent="." unique_id=1328972250]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 89.0
+grow_horizontal = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=1753863130]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_right = 136.0
+offset_bottom = 27.0
+grow_horizontal = 2
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Control/ProgressBar" unique_id=1465159476]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Durability"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1517346092]
+stream = ExtResource("4_q6140")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
