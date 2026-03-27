@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dq5kfvau2w5pa" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b0psllwpsmiqp" path="res://scripts/camera_3d.gd" id="2_tuyoq"]
-[ext_resource type="PackedScene" uid="uid://b20wdtyex5iw4" path="res://scenes/better_pickaxe.tscn" id="3_3v2ag"]
 [ext_resource type="Script" uid="uid://bmp6ypcg1wa0l" path="res://scripts/bobber.gd" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://h0ake6u10bko" path="res://assets/crosshairs/crosshair186.png" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://dwjsj5fg723p5" path="res://scripts/item_pickup_raycast.gd" id="4_qlg0r"]
@@ -23,6 +22,12 @@ bg_color = Color(0.3764706, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jej6c"]
 bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1ej7"]
+bg_color = Color(0.31294346, 0.20626345, 1.4439226e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oprun"]
+bg_color = Color(1, 0.69411767, 0, 1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1131972270]
 script = ExtResource("1_3vyb7")
@@ -45,8 +50,6 @@ script = ExtResource("2_tuyoq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86, -0.615, -1.125)
 
 [node name="Holding" type="Node3D" parent="Head/Camera3D/Hands/HandRight" unique_id=527588064]
-
-[node name="BetterPickaxe" parent="Head/Camera3D/Hands/HandRight/Holding" unique_id=773139257 instance=ExtResource("3_3v2ag")]
 
 [node name="RightHandBobber" type="Node3D" parent="Head/Camera3D/Hands/HandRight/Holding" unique_id=436207194]
 script = ExtResource("3_qhqgy")
@@ -125,29 +128,25 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=29205609]
+[node name="Hotbar" parent="HUD" unique_id=929065246 instance=ExtResource("9_ur7pv")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = -40.0
 offset_right = 20.0
-grow_horizontal = 2
 grow_vertical = 0
-
-[node name="Hotbar" parent="HUD/VBoxContainer" unique_id=929065246 instance=ExtResource("9_ur7pv")]
-layout_mode = 2
 
 [node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=624088538]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -202.0
-offset_bottom = 27.0
+offset_left = -240.0
+offset_top = 25.0
+offset_right = -32.0
+offset_bottom = 52.0
 grow_horizontal = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_3v2ag")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jej6c")
@@ -155,6 +154,20 @@ step = 1.0
 value = 100.0
 show_percentage = false
 script = ExtResource("10_jej6c")
+
+[node name="HungerBar" type="ProgressBar" parent="HUD" unique_id=956704515]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 109.0
+offset_right = -32.0
+offset_bottom = 136.0
+grow_horizontal = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_f1ej7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oprun")
+show_percentage = false
 
 [node name="Footsteps" type="Node" parent="." unique_id=2089040587]
 

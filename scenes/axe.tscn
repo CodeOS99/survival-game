@@ -76,6 +76,7 @@ script = ExtResource("1_725vr")
 damage_per_swing = 2
 particle_point = NodePath("Mesh/tool-axe/ParticlePoint")
 max_per_swing = 5
+hunger_cost = 0.75
 
 [node name="Mesh" parent="." unique_id=1974760275 instance=ExtResource("1_odgf8")]
 transform = Transform3D(3.777092, -1.3546087e-07, -1.3166533, 1.0674833e-07, 4, -1.0530123e-07, 1.3166533, 6.429548e-08, 3.777092, 0, 0, 0)

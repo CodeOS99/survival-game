@@ -12,6 +12,7 @@ const SENSITIVITY = 0.004
 @onready var inventory: InventoryNode = $HUD/Inv/InventoryNode
 @onready var crafting_menu: Control = $HUD/Inv/CraftingMenu
 @onready var health_bar: ProgressBar = $HUD/HealthBar
+@onready var hunger_bar: ProgressBar = $HUD/HungerBar
 
 #fov variables
 const BASE_FOV = 75.0
@@ -37,7 +38,9 @@ var footstep_players: Array
 
 var max_health := 100.0
 var health := max_health
-var hunger := 0.0
+
+var max_hunger := 100.0
+var hunger := 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -47,6 +50,9 @@ func _ready():
 	
 	health_bar.max_value = max_health
 	health_bar.value = max_health
+	
+	hunger_bar.max_value = max_hunger
+	hunger_bar.value = hunger
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and can_turn:
@@ -61,6 +67,7 @@ func _process(delta: float) -> void:
 				if right_hand_holding.get_child(0).is_in_group("usable"):
 					if not right_hand_holding.get_child(0).using:
 						right_hand_holding.get_child(0).use()
+						get_hungry(right_hand_holding.get_child(0).hunger_cost)
 		elif Input.is_action_just_released("use_tool"):
 			if right_hand_holding.get_child(0):
 				if right_hand_holding.get_child(0).is_in_group("usable"):
@@ -127,6 +134,7 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		get_hungry(1)
 	
 	# Handle Sprint.
 	if Input.is_action_pressed("sprint"):
@@ -153,6 +161,8 @@ func _physics_process(delta):
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	move_and_slide()
+	
+	get_hungry(abs(velocity.x)/125)
 
 func play_footstep(speed_ratio: float):
 	var player = footstep_players.pick_random()
@@ -172,3 +182,6 @@ func shake_camera(period: float = 0.3, magnitude: float = 0.01):
 func take_damage(dmg: float):
 	health -= dmg
 	health_bar.value = health
+
+func get_hungry(hunger: float):
+	hunger_bar.value += hunger

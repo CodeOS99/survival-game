@@ -3,6 +3,7 @@ extends Node3D
 @export var damage_per_swing = 1
 @export var particle_point: Node3D
 @export var max_per_swing: int = 1
+@export var hunger_cost: float = 1.25
 
 @onready var area: Area3D = $Area3D
 

@@ -74,6 +74,7 @@ _data = {
 transform = Transform3D(0.5299193, 0, -0.8480482, 0, 1.0000001, 0, 0.8480482, 0, 0.5299193, 0, 0, 0)
 script = ExtResource("1_2ikqw")
 particle_point = NodePath("ParticlePoint")
+hunger_cost = 0.75
 
 [node name="tool-pickaxe2" parent="." unique_id=370684419 instance=ExtResource("1_40cab")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
