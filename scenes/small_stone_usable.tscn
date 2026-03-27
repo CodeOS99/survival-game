@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cwuc2egieidna" path="res://scripts/axe_tool.gd" id="1_0rmn0"]
 [ext_resource type="PackedScene" uid="uid://cvcmpj8wbu65o" path="res://assets/simpleRock/simple_stone.blend" id="1_iynhe"]
 [ext_resource type="Texture2D" uid="uid://cqkssnb5ber4h" path="res://assets/simpleRock/textures/Image_0.png" id="2_0rmn0"]
+[ext_resource type="AudioStream" uid="uid://d15xgtj7wjq70" path="res://assets/sound/sfx/swoosh.mp3" id="4_fr4ul"]
+[ext_resource type="AudioStream" uid="uid://pxwh3efnmj8g" path="res://assets/sound/sfx/axe_on_wood_cut.mp3" id="5_xo5q0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvhfi"]
 resource_name = "Scene_-_Root"
@@ -103,6 +105,12 @@ shape = SubResource("ConvexPolygonShape3D_xo5q0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=248418250]
 libraries/ = SubResource("AnimationLibrary_xo5q0")
+
+[node name="Swoosh" type="AudioStreamPlayer" parent="." unique_id=1406578671]
+stream = ExtResource("4_fr4ul")
+
+[node name="AxeOnWoodCut" type="AudioStreamPlayer" parent="." unique_id=1557638873]
+stream = ExtResource("5_xo5q0")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 

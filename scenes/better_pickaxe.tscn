@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b2wrakmt2x1ub" path="res://scripts/pickaxe_tool.gd" id="1_7mkya"]
 [ext_resource type="PackedScene" uid="uid://bhtl2tn8vqwlb" path="res://assets/kenneysSurvivalKit/GLB format/tool-pickaxe-upgraded.glb" id="1_uagih"]
+[ext_resource type="AudioStream" uid="uid://d15xgtj7wjq70" path="res://assets/sound/sfx/swoosh.mp3" id="3_85fas"]
 
 [sub_resource type="Animation" id="Animation_7mkya"]
 length = 0.001
@@ -96,5 +97,8 @@ shape = SubResource("BoxShape3D_7mkya")
 
 [node name="ParticlePoint" type="Node3D" parent="." unique_id=600625751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3648219, 0.85791487, 0.010250807)
+
+[node name="Swoosh" type="AudioStreamPlayer" parent="." unique_id=328434501]
+stream = ExtResource("3_85fas")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

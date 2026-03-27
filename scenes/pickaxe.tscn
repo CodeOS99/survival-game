@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b2wrakmt2x1ub" path="res://scripts/pickaxe_tool.gd" id="1_2ikqw"]
 [ext_resource type="PackedScene" uid="uid://dcdgx0pgeua74" path="res://assets/kenneysSurvivalKit/GLB format/tool-pickaxe.glb" id="1_40cab"]
+[ext_resource type="AudioStream" uid="uid://d15xgtj7wjq70" path="res://assets/sound/sfx/swoosh.mp3" id="3_ln4w3"]
+[ext_resource type="AudioStream" uid="uid://be5ogithdr6o3" path="res://assets/sound/sfx/pickaxe_on_ore.mp3" id="4_07kgg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_40cab"]
 size = Vector3(0.09140015, 0.7993164, 0.12036133)
@@ -95,5 +97,11 @@ speed_scale = 2.0
 
 [node name="ParticlePoint" type="Node3D" parent="." unique_id=1903919845]
 transform = Transform3D(0.99999976, 0, 2.9802322e-08, 0, 0.99999964, 0, -2.9802322e-08, 0, 0.99999976, -0.2744681, 0.91040003, -0.1715067)
+
+[node name="Swoosh" type="AudioStreamPlayer" parent="." unique_id=965170323]
+stream = ExtResource("3_ln4w3")
+
+[node name="PickaxeOnOre" type="AudioStreamPlayer" parent="." unique_id=220405220]
+stream = ExtResource("4_07kgg")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cwuc2egieidna" path="res://scripts/axe_tool.gd" id="1_3xlsu"]
 [ext_resource type="PackedScene" uid="uid://px30ieeu47bn" path="res://assets/kenneysSurvivalKit/GLB format/tool-axe-upgraded.glb" id="1_dysr7"]
+[ext_resource type="AudioStream" uid="uid://d15xgtj7wjq70" path="res://assets/sound/sfx/swoosh.mp3" id="3_qbwsa"]
+[ext_resource type="AudioStream" uid="uid://pxwh3efnmj8g" path="res://assets/sound/sfx/axe_on_wood_cut.mp3" id="4_p2vc7"]
 
 [sub_resource type="Animation" id="Animation_3xlsu"]
 length = 0.001
@@ -97,6 +99,12 @@ shape = SubResource("BoxShape3D_dysr7")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=614723082]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0064697303, 0.8924866, 0.012390155)
 shape = SubResource("BoxShape3D_3xlsu")
+
+[node name="Swoosh" type="AudioStreamPlayer" parent="." unique_id=1457990653]
+stream = ExtResource("3_qbwsa")
+
+[node name="AxeOnWoodCut" type="AudioStreamPlayer" parent="." unique_id=115641089]
+stream = ExtResource("4_p2vc7")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 

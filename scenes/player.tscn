@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://djkrgcukh3dal" path="res://assets/sound/sfx/grass_2.mp3" id="10_3v2ag"]
 [ext_resource type="Script" uid="uid://c77oq1btd3beb" path="res://scripts/health_bar.gd" id="10_jej6c"]
 [ext_resource type="AudioStream" uid="uid://d3c3vmkolavob" path="res://assets/sound/sfx/grass_3.mp3" id="11_jej6c"]
+[ext_resource type="AudioStream" uid="uid://b7jwiayat01ws" path="res://assets/sound/sfx/item_pickup.wav" id="13_jej6c"]
+[ext_resource type="AudioStream" uid="uid://bmtkde0lgmmve" path="res://assets/sound/sfx/hurt.wav" id="14_f1ej7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
@@ -181,3 +183,9 @@ pitch_scale = 2.0
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Footsteps" unique_id=154383152]
 stream = ExtResource("11_jej6c")
 pitch_scale = 2.0
+
+[node name="ItemPickup" type="AudioStreamPlayer" parent="." unique_id=1120723986]
+stream = ExtResource("13_jej6c")
+
+[node name="Hurt" type="AudioStreamPlayer" parent="." unique_id=308296707]
+stream = ExtResource("14_f1ej7")

@@ -16,6 +16,7 @@ func chopped(damage: float) -> bool: # also return whether its chopped or not
 	for i in range(health-damage, health): # spawn a log every fourth damage
 		if i % 4 == 0:
 			self.spawn_mineral()
+			$Pop.play()
 
 	health -= damage
 	self.mesh.scale.x-=(damage/MAX_HEALTH*.33)

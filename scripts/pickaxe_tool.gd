@@ -14,6 +14,7 @@ var ore_particle = preload("res://scenes/ore_particles.tscn")
 
 func use():
 	$AnimationPlayer.play("lmb")
+	$Swoosh.play()
 	using = true
 
 func reset():
@@ -30,6 +31,7 @@ func _process(delta: float) -> void:
 			if body.is_in_group("Ore") and body not in hit_ores and len(hit_ores)+1 <= max_per_swing:
 				if body.chopped(damage_per_swing):
 					body.queue_free()
+				$PickaxeOnOre.play()
 				hit_ores.append(body)
 
 				spawn_tree_particle()

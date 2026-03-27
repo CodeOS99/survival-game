@@ -14,6 +14,7 @@ var tree_particle = preload("res://scenes/tree_blast_particles.tscn")
 
 func use():
 	$AnimationPlayer.play("lmb")
+	$Swoosh.play()
 	using = true
 
 func reset():
@@ -30,6 +31,7 @@ func _process(delta: float) -> void:
 			if body.is_in_group("Tree") and body not in hit_trees and len(hit_trees)+1 <= max_per_swing:
 				if body.chopped(damage_per_swing):
 					body.queue_free()
+				$AxeOnWoodCut.play()
 				hit_trees.append(body)
 
 				spawn_tree_particle()

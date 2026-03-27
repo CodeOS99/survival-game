@@ -40,6 +40,9 @@ var max_health := 100.0
 
 var max_hunger := 100.0
 
+var hunger_damage_interval = 1.25
+var hunger_damage_curr = 0.0
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Globals.player = self
@@ -82,8 +85,14 @@ func _process(delta: float) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			can_turn = true
 
-	if hunger_bar.value > 90.0:
-		take_damage(delta * 4)
+	if hunger_bar.value > 80.0:
+		hunger_damage_curr += delta
+		if hunger_damage_curr > hunger_damage_interval:
+			hunger_damage_curr = 0
+			take_damage(3)
+			$Hurt.play()
+	else:
+		hunger_damage_curr = 0
 	
 	if health_bar.value <= 0:
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
@@ -189,7 +198,6 @@ func take_damage(dmg: float):
 	health_bar.value -= dmg
 
 func get_hungry(hunger_addition: float):
-	hunger_bar.value += hunger_addition
 	hunger_bar.value += hunger_addition
 	hunger_bar.value = max(0, hunger_bar.value)
 	hunger_bar.value = min(hunger_bar.value, max_hunger)

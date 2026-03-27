@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4eyvxg1tkr12" path="res://scripts/ore.gd" id="1_26d1w"]
 [ext_resource type="PackedScene" uid="uid://brw7ly4k2h5el" path="res://assets/ironOre/ironOre.blend" id="1_gpy2u"]
+[ext_resource type="AudioStream" uid="uid://bfy07uv5vvfeo" path="res://assets/sound/sfx/pop.mp3" id="3_apcs8"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_26d1w"]
 points = PackedVector3Array(2.8307648, -0.35866213, -0.6588526, 0.037462234, -2.8897576, -2.9982495, 0.023549318, 1.0522647, -3.3240812, 0.012846947, 1.169363, 2.9094298, 0.91398144, 0.42258406, 2.5537002, 2.5311003, -0.6485362, 0.3985746, 2.638123, -1.139908, 0.3308456, 2.1832752, -2.2048416, 1.1783736, -2.6359744, -0.6803515, -1.2073965, -1.410025, -2.4275498, 1.9526813, -1.0600594, 1.6240592, 0.14352298, 0.20388317, 0.12961674, 2.8569553, 0.8305032, 0.16585088, 2.720887)
@@ -108,5 +109,8 @@ mesh = SubResource("ArrayMesh_e65qv")
 
 [node name="MineralPoint" type="Node3D" parent="." unique_id=858142707]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36023068, 0)
+
+[node name="Pop" type="AudioStreamPlayer" parent="." unique_id=64842719]
+stream = ExtResource("3_apcs8")
 
 [editable path="mesh"]

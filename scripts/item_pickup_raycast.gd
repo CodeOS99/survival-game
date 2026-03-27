@@ -3,8 +3,6 @@ extends RayCast3D
 var prev_body: Node3D
 var looking_at := false
 
-
-
 func _physics_process(delta: float) -> void:
 	if self.is_colliding():
 		print(1)
@@ -27,6 +25,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pick_up") and looking_at:
 		if Globals.player.inventory.add_item(prev_body.item):
 			prev_body.queue_free()
+			$"../../../ItemPickup".play()
 
 func _not_looking():
 	$"../../../HUD/TextureRect".modulate = Color(1.0, 1.0, 1.0, 1.0)

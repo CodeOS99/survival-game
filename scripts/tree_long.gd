@@ -15,6 +15,7 @@ func spawn_log():
 func chopped(damage: float) -> bool: # also return whether its chopped or not
 	for i in range(health-damage, health): # spawn a log every fourth damage
 		if i % 4 == 0:
+			$Pop.play()
 			self.spawn_log()
 
 	health -= damage
