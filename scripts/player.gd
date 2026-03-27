@@ -113,7 +113,8 @@ func update_held_item():
 				$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
 		
 		var instance = item.mesh.instantiate()
-		instance.scale = Vector3(item.mesh_scale, item.mesh_scale, item.mesh_scale)
+		if item.mesh_scale != 1:
+			instance.scale = Vector3(item.mesh_scale, item.mesh_scale, item.mesh_scale)
 		$Head/Camera3D/Hands/HandRight/Holding.add_child(instance)
 		$Head/Camera3D/Hands/HandRight/Holding.move_child(instance, 0)
 		

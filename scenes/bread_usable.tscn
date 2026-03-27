@@ -2,11 +2,107 @@
 
 [ext_resource type="Script" uid="uid://b58i7fbithp10" path="res://scripts/bread_usable.gd" id="1_yenye"]
 [ext_resource type="PackedScene" uid="uid://0vjwcu3gmva" path="res://assets/bread/bread.blend" id="2_uqe7r"]
+[ext_resource type="AudioStream" uid="uid://ckvqisddcemv3" path="res://assets/sound/sfx/eat.mp3" id="3_uqe7r"]
 
-[node name="BreadUsable" type="Node3D" unique_id=1997894584 groups=["needs_hotbar_ref", "usable"]]
+[sub_resource type="Animation" id="Animation_yenye"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Eat:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_uqe7r"]
+resource_name = "lmb"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 0.7, 0.96, 1.19, 1.5333333, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.6671736, -0.71824074), Vector3(0, 0.2731599, -0.26392165), Vector3(0, 0.6671736, -0.71824074), Vector3(0, 0.2731599, -0.26392165), Vector3(0, 0.6671736, -0.71824074), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.7, 0.96, 1.19, 1.5666667, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.5968677, 0, 0), Vector3(0.27466246, 0, 0), Vector3(0.5968677, 0, 0), Vector3(0.27466246, 0, 0), Vector3(0.5968677, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Eat:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyd1n"]
+_data = {
+&"RESET": SubResource("Animation_yenye"),
+&"lmb": SubResource("Animation_uqe7r")
+}
+
+[node name="Node3D" type="Node3D" unique_id=325957051 groups=["usable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0)
 script = ExtResource("1_yenye")
 
-[node name="bread" parent="." unique_id=209030287 instance=ExtResource("2_uqe7r")]
+[node name="BreadUsable" type="Node3D" parent="." unique_id=1997894584]
+
+[node name="bread" parent="BreadUsable" unique_id=209030287 instance=ExtResource("2_uqe7r")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1654259811]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BreadUsable" unique_id=1654259811]
+libraries/ = SubResource("AnimationLibrary_uyd1n")
+
+[node name="Eat" type="AudioStreamPlayer" parent="BreadUsable" unique_id=1672098995]
+stream = ExtResource("3_uqe7r")
+
+[connection signal="animation_finished" from="BreadUsable/AnimationPlayer" to="BreadUsable" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="BreadUsable/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
