@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dq5kfvau2w5pa" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b0psllwpsmiqp" path="res://scripts/camera_3d.gd" id="2_tuyoq"]
-[ext_resource type="PackedScene" uid="uid://xjvrxfpoioq5" path="res://scenes/pickaxe.tscn" id="3_3v2ag"]
+[ext_resource type="PackedScene" uid="uid://b20wdtyex5iw4" path="res://scenes/better_pickaxe.tscn" id="3_3v2ag"]
 [ext_resource type="Script" uid="uid://bmp6ypcg1wa0l" path="res://scripts/bobber.gd" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://h0ake6u10bko" path="res://assets/crosshairs/crosshair186.png" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://dwjsj5fg723p5" path="res://scripts/item_pickup_raycast.gd" id="4_qlg0r"]
@@ -39,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86, -0.615, -1.125)
 
 [node name="Holding" type="Node3D" parent="Head/Camera3D/Hands/HandRight" unique_id=527588064]
 
-[node name="pickaxe" parent="Head/Camera3D/Hands/HandRight/Holding" unique_id=1999466012 instance=ExtResource("3_3v2ag")]
+[node name="BetterPickaxe" parent="Head/Camera3D/Hands/HandRight/Holding" unique_id=773139257 instance=ExtResource("3_3v2ag")]
 
 [node name="RightHandBobber" type="Node3D" parent="Head/Camera3D/Hands/HandRight/Holding" unique_id=436207194]
 script = ExtResource("3_qhqgy")
@@ -108,6 +108,7 @@ offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/separation = 50
 
 [node name="InventoryNode" parent="HUD/Inv" unique_id=17360702 instance=ExtResource("7_fjrip")]
 layout_mode = 2

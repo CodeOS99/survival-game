@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cctw6dpb6xwci"]
+
+[ext_resource type="PackedScene" uid="uid://b20wdtyex5iw4" path="res://scenes/better_pickaxe.tscn" id="1_338eh"]
+[ext_resource type="Script" uid="uid://dqotofq0kbye" path="res://scripts/item_data.gd" id="1_ep3dd"]
+[ext_resource type="Texture2D" uid="uid://cl5h1v4ajf63r" path="res://assets/inventory_item_images/better_pickaxe.png" id="3_3w6e6"]
+
+[resource]
+script = ExtResource("1_ep3dd")
+title = "Better Pickaxe"
+description = "Pickaxe that is better!"
+texture = ExtResource("3_3w6e6")
+mesh = ExtResource("1_338eh")
+metadata/_custom_type_script = "uid://dqotofq0kbye"

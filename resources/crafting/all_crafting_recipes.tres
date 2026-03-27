@@ -8,8 +8,9 @@
 [ext_resource type="Resource" uid="uid://b5i88knqjpypv" path="res://resources/crafting/recipes/iron_ingot_mirror.tres" id="5_5ccck"]
 [ext_resource type="Resource" uid="uid://cgr8311u0ihgh" path="res://resources/crafting/recipes/iron_ingot.tres" id="6_ld5fe"]
 [ext_resource type="Resource" uid="uid://caxyw32oo44qw" path="res://resources/crafting/recipes/BetterAxe.tres" id="7_ld5fe"]
+[ext_resource type="Resource" uid="uid://c8yj70f5lmjuu" path="res://resources/crafting/recipes/BetterPickaxe.tres" id="8_rvrgq"]
 
 [resource]
 script = ExtResource("2_lue5t")
-recipes = Array[ExtResource("1_6rjdm")]([ExtResource("2_cq8pq"), ExtResource("3_cq8pq"), ExtResource("4_usbfj"), ExtResource("5_5ccck"), ExtResource("6_ld5fe"), ExtResource("7_ld5fe")])
+recipes = Array[ExtResource("1_6rjdm")]([ExtResource("2_cq8pq"), ExtResource("3_cq8pq"), ExtResource("4_usbfj"), ExtResource("5_5ccck"), ExtResource("6_ld5fe"), ExtResource("7_ld5fe"), ExtResource("8_rvrgq")])
 metadata/_custom_type_script = "uid://dvpvcplwy0rnt"

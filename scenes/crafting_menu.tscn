@@ -8,9 +8,11 @@
 
 [node name="CraftingMenu" type="Control" unique_id=210753137]
 layout_mode = 3
-anchors_preset = 4
 anchor_top = 0.5
-anchor_bottom = 0.5
+anchor_right = 0.287
+anchor_bottom = 0.86800003
+offset_right = -330.624
+offset_bottom = -238.46399
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_8qu5l")
