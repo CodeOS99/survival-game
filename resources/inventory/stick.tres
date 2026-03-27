@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_jvjgn")
 title = "Stick"
-description = "loong wood"
+description = "Thin and long wood"
 texture = ExtResource("2_b657f")
 mesh = ExtResource("1_qlcsx")
 mesh_scale = 4

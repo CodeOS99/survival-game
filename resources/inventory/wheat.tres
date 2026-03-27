@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_xf68t")
 title = "Wheat"
-description = "whheaaaaaat"
+description = "Raw bread!"
 texture = ExtResource("3_65gco")
 mesh = ExtResource("1_3v6w1")
 mesh_scale = 0.1
