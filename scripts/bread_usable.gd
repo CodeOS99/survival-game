@@ -13,17 +13,16 @@ func use() -> void:
 		return
 	using = true
 	$BreadUsable/AnimationPlayer.play("lmb")
-
 	hotbar_ref.slot_data.amount -= 1
-	if hotbar_ref.slot_data.amount <= 0:
-		hotbar_ref.slot_data = null
 	hotbar_ref.update_visuals()
-
-func reset():
-	pass
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "lmb":
 		using = false
-		if not hotbar_ref.slot_data: # eated :D
+		if hotbar_ref.slot_data and hotbar_ref.slot_data.amount <= 0:
+			hotbar_ref.slot_data = null
+			hotbar_ref.update_visuals()
 			self.queue_free()
+
+func reset():
+	pass

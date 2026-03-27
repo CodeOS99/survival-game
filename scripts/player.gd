@@ -103,6 +103,12 @@ func update_held_item():
 	if curr_held_item == item:
 		return
 	
+	# Don't swap out the item mid-use
+	if right_hand_holding.get_child_count() > 0:
+		var held = right_hand_holding.get_child(0)
+		if "using" in held and held.using:
+			return
+		
 	if item == null:
 		if curr_held_item:
 			#if "can_delete" in curr_held_item:
