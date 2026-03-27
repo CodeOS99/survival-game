@@ -84,6 +84,7 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 		
 		self.update_visuals()
 		data.update_visuals()
+
 func update_visuals():
 	if slot_data:
 		texture_rect.texture = slot_data.item.texture
@@ -91,6 +92,7 @@ func update_visuals():
 	else:
 		texture_rect.texture = null
 		amt_label.text = ""
+
 func remove_item(amount: int):
 	if self.slot_data:
 		self.slot_data.amount -= amount

@@ -19,10 +19,10 @@ func chopped(damage: float) -> bool: # also return whether its chopped or not
 			$Pop.play()
 
 	health -= damage
-	self.mesh.scale.x-=(damage/MAX_HEALTH*.33)
-	self.mesh.scale.y-=(damage/MAX_HEALTH*.33)
-	self.mesh.scale.z-=(damage/MAX_HEALTH*.33)
+	self.scale.x-=(damage/MAX_HEALTH*1)
+	self.scale.y-=(damage/MAX_HEALTH*1)
+	self.scale.z-=(damage/MAX_HEALTH*1)
 
 	Globals.player.shake_camera()
 	
-	return self.mesh.scale.x <= 0
+	return self.scale.x <= 0

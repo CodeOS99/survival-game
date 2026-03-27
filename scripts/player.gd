@@ -105,7 +105,13 @@ func update_held_item():
 	
 	if item == null:
 		if curr_held_item:
-			$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
+			if "can_delete" in curr_held_item:
+				if curr_held_item.can_delete:
+					if $Head/Camera3D/Hands/HandRight/Holding.get_child(0):
+						$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
+				else:
+					if $Head/Camera3D/Hands/HandRight/Holding.get_child(0):
+						$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
 			curr_held_item = item
 	if item:
 		if updated_held_once:

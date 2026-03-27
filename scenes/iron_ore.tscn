@@ -113,4 +113,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36023068, 0)
 [node name="Pop" type="AudioStreamPlayer" parent="." unique_id=64842719]
 stream = ExtResource("3_apcs8")
 
+[node name="Node3D" type="Node3D" parent="." unique_id=1727711908]
+
 [editable path="mesh"]

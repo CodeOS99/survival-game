@@ -3,7 +3,7 @@ extends Node3D
 const SIZE := 32
 const SCALE = 1.0
 const HEIGHT_SCALE := 5.0
-const GENERATION_DISTANCE = 1
+const GENERATION_DISTANCE = 4
 
 var noise: FastNoiseLite
 var chunks = {}

@@ -75,6 +75,7 @@ _data = {
 [node name="pickaxe" type="Node3D" unique_id=1999466012 node_paths=PackedStringArray("particle_point") groups=["usable"]]
 transform = Transform3D(0.5299193, 0, -0.8480482, 0, 1.0000001, 0, 0.8480482, 0, 0.5299193, 0, 0, 0)
 script = ExtResource("1_2ikqw")
+damage_per_swing = 2
 particle_point = NodePath("ParticlePoint")
 hunger_cost = 0.75
 
