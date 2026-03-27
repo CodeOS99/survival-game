@@ -37,10 +37,8 @@ var step_interval := 0.5 # base interval
 var footstep_players: Array
 
 var max_health := 100.0
-var health := max_health
 
 var max_hunger := 100.0
-var hunger := 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -52,7 +50,7 @@ func _ready():
 	health_bar.value = max_health
 	
 	hunger_bar.max_value = max_hunger
-	hunger_bar.value = hunger
+	hunger_bar.value = 0
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and can_turn:
@@ -86,9 +84,8 @@ func _process(delta: float) -> void:
 
 	if hunger_bar.value > 90.0:
 		take_damage(delta * 4)
-		print("hunger grater")
 	
-	if health <= 0:
+	if health_bar.value <= 0:
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func update_held_item():
@@ -189,11 +186,10 @@ func shake_camera(period: float = 0.3, magnitude: float = 0.01):
 	camera.should_shake = true
 
 func take_damage(dmg: float):
-	health -= dmg
-	health_bar.value = health
+	health_bar.value -= dmg
 
 func get_hungry(hunger_addition: float):
 	hunger_bar.value += hunger_addition
-	hunger += hunger_addition
-	hunger = max(0, hunger)
-	hunger = min(hunger, max_hunger)
+	hunger_bar.value += hunger_addition
+	hunger_bar.value = max(0, hunger_bar.value)
+	hunger_bar.value = min(hunger_bar.value, max_hunger)

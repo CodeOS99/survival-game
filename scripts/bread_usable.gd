@@ -9,5 +9,7 @@ var hunger_cost = -5 # not sure if this is a good way to do this
 
 func use() -> void:
 	self.queue_free()
-	hotbar_ref.slot_data = null
-	hotbar_ref.update_visuals()
+	hotbar_ref.slot_data.amount -= 1
+	if hotbar_ref.slot_data.amount <= 0:
+		hotbar_ref.slot_data = null
+		hotbar_ref.update_visuals()
