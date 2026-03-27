@@ -86,6 +86,9 @@ func _process(delta: float) -> void:
 	
 	if hunger > 90.0:
 		take_damage(delta * 4)
+	
+	if health <= 0:
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func update_held_item():
 	var item := hotbar.get_active_item()

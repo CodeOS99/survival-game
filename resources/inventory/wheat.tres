@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dqkouycstt6xg"]
+
+[ext_resource type="PackedScene" uid="uid://cx4blnd57nu23" path="res://assets/wheat/wheat.blend" id="1_3v6w1"]
+[ext_resource type="Script" uid="uid://dqotofq0kbye" path="res://scripts/item_data.gd" id="1_xf68t"]
+[ext_resource type="Texture2D" uid="uid://clos43saopgen" path="res://assets/inventory_item_images/wheat.png" id="3_65gco"]
+
+[resource]
+script = ExtResource("1_xf68t")
+title = "Wheat"
+description = "whheaaaaaat"
+texture = ExtResource("3_65gco")
+mesh = ExtResource("1_3v6w1")
+mesh_scale = 0.1
+metadata/_custom_type_script = "uid://dqotofq0kbye"

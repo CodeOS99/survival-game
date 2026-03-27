@@ -12,6 +12,7 @@ var last_player_chunk := Vector2i(999999, 999999)
 var tree := preload("res://scenes/tree_long.tscn")
 var small_stone := preload("res://scenes/small_stone_collectible.tscn")
 var iron_ore := preload("res://scenes/iron_ore.tscn")
+var wheat := preload("res://scenes/wheat_collectible.tscn")
 
 var obj_noise: FastNoiseLite
 
@@ -90,11 +91,13 @@ func spawn_objects(chunk_x: int, chunk_z: int, parent: Node3D):
 			var world_z = z + chunk_z * SIZE
 			
 			var height = noise.get_noise_2d(world_x, world_z) * HEIGHT_SCALE
+			var n = obj_noise.get_noise_2d(world_x, world_z)
 			
-			if height <= 0:
+			if height < 0:
+				if .1 < n and n < .2 and - 2< height:
+					spawn_object(x, height, z, parent, wheat)
 				continue
 			
-			var n = obj_noise.get_noise_2d(world_x, world_z)
 			if n > 0.65:
 				spawn_object(x, height, z, parent, tree)  # local x/z, not world!
 			if 0.4 <= n and n <= 0.42:
