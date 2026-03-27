@@ -1,17 +1,9 @@
 class_name Player extends CharacterBody3D
 
-var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.8*2/1.25
 const SENSITIVITY = 0.004
-
-#fov variables
-const BASE_FOV = 75.0
-const FOV_CHANGE = 1.5
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = 9.8*2
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
@@ -19,6 +11,15 @@ var gravity = 9.8*2
 @onready var hotbar: Hotbar = $HUD/Hotbar
 @onready var inventory: InventoryNode = $HUD/Inv/InventoryNode
 @onready var crafting_menu: Control = $HUD/Inv/CraftingMenu
+@onready var health_bar: ProgressBar = $HUD/HealthBar
+
+#fov variables
+const BASE_FOV = 75.0
+const FOV_CHANGE = 1.5
+var speed
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = 9.8*2
 
 # for additional bobbing things
 var additional_bobbers: Array[Node3D] = []
@@ -34,11 +35,18 @@ var step_timer := 0.0
 var step_interval := 0.5 # base interval
 var footstep_players: Array
 
+var max_health := 100.0
+var health := max_health
+var hunger := 0.0
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Globals.player = self
 	
 	footstep_players = $Footsteps.get_children()
+	
+	health_bar.max_value = max_health
+	health_bar.value = max_health
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and can_turn:
@@ -160,3 +168,7 @@ func shake_camera(period: float = 0.3, magnitude: float = 0.01):
 	camera.period = period
 	camera.magnitude = magnitude
 	camera.should_shake = true
+
+func take_damage(dmg: float):
+	health -= dmg
+	health_bar.value = health

@@ -11,11 +11,18 @@
 [ext_resource type="AudioStream" uid="uid://d30gjc0kcjon3" path="res://assets/sound/sfx/grass_1.mp3" id="9_d2wvv"]
 [ext_resource type="PackedScene" uid="uid://dmpvhi8tyd2lw" path="res://scenes/hotbar.tscn" id="9_ur7pv"]
 [ext_resource type="AudioStream" uid="uid://djkrgcukh3dal" path="res://assets/sound/sfx/grass_2.mp3" id="10_3v2ag"]
+[ext_resource type="Script" uid="uid://c77oq1btd3beb" path="res://scripts/health_bar.gd" id="10_jej6c"]
 [ext_resource type="AudioStream" uid="uid://d3c3vmkolavob" path="res://assets/sound/sfx/grass_3.mp3" id="11_jej6c"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v2ag"]
+bg_color = Color(0.3764706, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jej6c"]
+bg_color = Color(1, 0, 0, 1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1131972270]
 script = ExtResource("1_3vyb7")
@@ -118,17 +125,36 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 2
 
-[node name="Hotbar" parent="HUD" unique_id=929065246 instance=ExtResource("9_ur7pv")]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=29205609]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -398.0
-offset_top = -218.025
-offset_right = 398.0
-offset_bottom = -8.025635
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Hotbar" parent="HUD/VBoxContainer" unique_id=929065246 instance=ExtResource("9_ur7pv")]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=624088538]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -202.0
+offset_bottom = 27.0
+grow_horizontal = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_3v2ag")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jej6c")
+step = 1.0
+value = 100.0
+show_percentage = false
+script = ExtResource("10_jej6c")
 
 [node name="Footsteps" type="Node" parent="." unique_id=2089040587]
 
