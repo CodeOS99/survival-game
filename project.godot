@@ -34,6 +34,7 @@ Tree=""
 Collectible=""
 usable=""
 Ore=""
+Player=""
 
 [gui]
 

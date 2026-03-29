@@ -31,7 +31,7 @@ bg_color = Color(0.31294346, 0.20626345, 1.4439226e-07, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oprun"]
 bg_color = Color(1, 0.69411767, 0, 1)
 
-[node name="Player" type="CharacterBody3D" unique_id=1131972270]
+[node name="Player" type="CharacterBody3D" unique_id=1131972270 groups=["Player"]]
 script = ExtResource("1_3vyb7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1022256099]

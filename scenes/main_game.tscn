@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dvnbtdsths6f3"]
 
 [ext_resource type="PackedScene" uid="uid://q2x0ajymmhdw" path="res://scenes/player.tscn" id="1_s3esy"]
-[ext_resource type="PackedScene" uid="uid://cd0qtjb43jcfx" path="res://scenes/tree_long.tscn" id="2_72e8q"]
+[ext_resource type="PackedScene" uid="uid://cye5df6o1annt" path="res://scenes/skeleton_minion.tscn" id="3_0rdsr"]
 [ext_resource type="Script" uid="uid://bf2brnx75e3lf" path="res://scripts/world_generator.gd" id="3_d2op2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s3esy"]
@@ -25,14 +25,17 @@ albedo_color = Color(0.4117647, 0.52156866, 0.28235295, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_72e8q"]
 points = PackedVector3Array(-10, -0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, -0.5, 10, -10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, 10)
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_d2op2"]
+cell_size = 0.5
+
 [node name="MainGame" type="Node3D" unique_id=215476466]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=417155798]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1193901295]
 environment = SubResource("Environment_d2op2")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=515590592]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1131972270 instance=ExtResource("1_s3esy")]
 transform = Transform3D(-0.62484753, 0, -0.7807468, 0, 1, 0, 0.7807468, 0, -0.62484753, -2.0628986, 4.3083935, -0.4526801)
@@ -49,8 +52,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_72e8q")
 shape = SubResource("ConvexPolygonShape3D_72e8q")
 disabled = true
 
-[node name="TreeLong" parent="." unique_id=551745622 instance=ExtResource("2_72e8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40605688, 2.6387143)
+[node name="SkeletonMinion" parent="." unique_id=350788174 instance=ExtResource("3_0rdsr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 
-[node name="WorldGenerator" type="Node3D" parent="." unique_id=1219654587]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=114730396]
+navigation_mesh = SubResource("NavigationMesh_d2op2")
+
+[node name="WorldGenerator" type="Node3D" parent="NavigationRegion3D" unique_id=1219654587]
 script = ExtResource("3_d2op2")

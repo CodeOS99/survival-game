@@ -3,7 +3,7 @@ extends Node3D
 const SIZE := 32
 const SCALE = 1.0
 const HEIGHT_SCALE := 5.0
-const GENERATION_DISTANCE = 4
+const GENERATION_DISTANCE = 1
 
 var noise: FastNoiseLite
 var chunks = {}
@@ -53,6 +53,8 @@ func generate_chunks():
 			if not chunks.has(key): # generate onlly if not already generated
 				var chunk = generate_chunk(x, z)
 				chunks[key] = chunk
+	
+	$"..".bake_navigation_mesh()
 
 func generate_chunk(chunk_x: int, chunk_z: int) -> Node3D:
 	var st = SurfaceTool.new()
