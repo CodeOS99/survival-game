@@ -24,7 +24,7 @@ Control-click drag to move single items
 
 Press the craft button to obtain crafts.
 
-Numbers to swap active hotbar slots
+Press number keys to swap active hotbar slots
 
 - Moving, sprinting, jumping, and using tools makes you hungry.
 - Getting too hungry(>85% hunger) leads to damage.
@@ -34,7 +34,8 @@ Numbers to swap active hotbar slots
 - Trees can spawn logs, but also skeletons. Beware!
 - Skeletons may be hurt be axes and stones
 - Use logs to make sticks
-- Use these to make pickaxes to break ores to obtain coal and iron
+- Use these to make pickaxes to break ores(black, spiky structures) to obtain coal and raw iron
+- Coal and raw iron together make iron ingots, which can be used to upgrade axes and pickaxes.
 
 ## Crafting recipes
 
