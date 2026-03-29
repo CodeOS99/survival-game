@@ -79,6 +79,7 @@ damage_per_swing = 4
 particle_point = NodePath("tool-axe-upgraded2/ParticlePoint")
 max_per_swing = 10
 hunger_cost = 1.25
+damage = 3
 
 [node name="tool-axe-upgraded2" parent="." unique_id=1285649671 instance=ExtResource("1_dysr7")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

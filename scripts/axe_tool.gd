@@ -4,11 +4,13 @@ extends Node3D
 @export var particle_point: Node3D
 @export var max_per_swing: int = 1
 @export var hunger_cost: float = .5
+@export var damage = 1
 
 @onready var area: Area3D = $Area3D
 
 var using: bool = false
 var hit_trees = [] # if performance becomes an issue i could give every tree and index, and then binary search along this array to find if the tree exists although i don't think it will be an issue
+var hit_enemies = []
 
 var tree_particle = preload("res://scenes/tree_blast_particles.tscn")
 
@@ -24,6 +26,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "lmb":
 		using = false
 		hit_trees = []
+		hit_enemies = []
 
 func _process(delta: float) -> void:
 	if using:
@@ -35,6 +38,9 @@ func _process(delta: float) -> void:
 				hit_trees.append(body)
 
 				spawn_tree_particle()
+			elif body.is_in_group("Enemy") and body not in hit_enemies:
+				body.take_damage(damage)
+				hit_enemies.append(body)
 				
 func spawn_tree_particle():
 	var particles = tree_particle.instantiate()

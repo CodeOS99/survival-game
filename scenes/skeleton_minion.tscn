@@ -50,7 +50,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_wn3et"]
 size = Vector3(0.9267578, 2.0479126, 1)
 
-[node name="SkeletonMinion" type="CharacterBody3D" unique_id=1588573]
+[node name="SkeletonMinion" type="CharacterBody3D" unique_id=1588573 groups=["Enemy"]]
 script = ExtResource("1_shb4u")
 
 [node name="mesh" parent="." unique_id=299500279 instance=ExtResource("1_ayr4s")]
