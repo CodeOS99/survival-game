@@ -59,3 +59,12 @@ Press number keys to swap active hotbar slots
 
 - Bread
 <img width="378" height="259" alt="image" src="https://github.com/user-attachments/assets/179aed84-7c5f-4810-9f3f-52a3df55233d" />
+
+## Credits
+LOW POLY ROCK ASSET PACK by TANDA, licensed under Creative Commons Attribution:
+
+https://sketchfab.com/3d-models/low-poly-rock-asset-pack-839cbd60bf0245dea89285ffef1409c8
+
+Kenney for trees, cursor, and crosshair
+
+Kay Lousberg for the skeleton
