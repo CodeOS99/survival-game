@@ -39,7 +39,6 @@ func make_drag_preview(at_position: Vector2) -> Control:
 	t.position = -at_position
 	
 	var label := Label.new()
-	print(craft_ctrl)
 	label.text = "x%d"%(1 if craft_ctrl else ceil(slot_data.amount/2.0) if craft_shift else slot_data.amount) # 1, half, or all
 	
 	t.add_child(label)

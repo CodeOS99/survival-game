@@ -27,7 +27,8 @@ Press the craft button to obtain crafts.
 Numbers to swap active hotbar slots
 
 - Moving, sprinting, jumping, and using tools makes you hungry.
-- Getting too hungry(>85%) leads to damage.
+- Getting too hungry(>85% hunger) leads to damage.
+- On the other hand, being full(<20% hunger) replenishes health!
 - Make bread using wheat to reduce hunger.
 - Obtain small stones to break trees and obtain logs
 - Trees can spawn logs, but also skeletons. Beware!

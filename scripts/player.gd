@@ -91,6 +91,8 @@ func _process(delta: float) -> void:
 			hunger_damage_curr = 0
 			take_damage(3)
 			$Hurt.play()
+	elif hunger_bar.value < 20.0:
+		health_bar.value = min(health_bar.value + 2.0 * delta, max_health)
 	else:
 		hunger_damage_curr = 0
 	

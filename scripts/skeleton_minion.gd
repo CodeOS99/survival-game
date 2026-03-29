@@ -47,7 +47,6 @@ func take_damage(amt: int) -> void:
 		return
 	$SkeletonHurt.play()
 	health -= amt
-	print(health)
 	if health <= 0:
 		_die()
 	else:
