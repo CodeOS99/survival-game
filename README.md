@@ -3,6 +3,8 @@
 Sprouted is a survival game with procedural generation and a full inventory mechanism, complete with crafting and a hotbar!
 
 Itch: https://codeos99.itch.io/sprouted
+(Note: The web version doesn't perform too well. So, its recommended to download the game)
+
 Demo Video: https://youtu.be/N6YfpV03-dQ
 
 <img width="1919" height="1089" alt="Preview" src="https://github.com/user-attachments/assets/e260a1e9-c6f6-44a8-af0c-313b923c141e" />
